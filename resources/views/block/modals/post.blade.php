@@ -46,7 +46,7 @@
                                 <li><a class="modal-like"><i class="fa fa-heart"></i></a><span class="modal-one"> {{ $post->likers()->get()->count() }}</span> |
                                     <a class="modal-comment" href="#"><i class="fa fa-comments"></i></a><span> {{ $post->allComments()->get()->count() }}</span> </li>
                                 <li>
-                                    <form class="display-none post-{{ $post->id }}">
+                                    <form class="post-{{ $post->id }}">
                                         <span class="thumb-xs">
                                             <img class="img-responsive img-circle" src="{{ getAvatar(auth()->user()->avatar) }}" alt="{{ auth()->user()->name }}">
                                         </span>

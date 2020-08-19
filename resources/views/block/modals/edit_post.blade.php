@@ -27,11 +27,7 @@
                                     @enderror
                                 </div>
                                 <div id="image-holder" class="edit-image edit-image-holder post-{{ $post->id }}">
-                                    @if (isset($postImages))
-                                        @foreach ($postImages as $postImage)
-                                            <img src="{{ asset('storage/images/posts/' . $postImage) }}">
-                                        @endforeach
-                                    @endif
+                                    @include('block.modals.image_edit')
                                 </div>
                                 <div class="add-options-message edit-image-message">
                                     <a href="#" class="options-message edit-image-message" data-toggle="tooltip" data-placement="top" data-original-title="@lang('ADD PHOTOS')" data-post-id="{{ $post->id }}">

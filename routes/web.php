@@ -24,5 +24,6 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::post('follow', 'HomeController@followUserRequest')->name('user.follow');
     Route::resource('comments', 'CommentController');
     Route::post('like', 'PostController@likePost')->name('likePost');
+    Route::get('posts/{post}/get-images', 'PostController@getImageEditPost');
 });
 
