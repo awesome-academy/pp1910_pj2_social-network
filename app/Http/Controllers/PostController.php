@@ -6,6 +6,7 @@ use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Services\PostService;
+use Illuminate\Http\Response;
 
 class PostController extends Controller
 {
@@ -124,5 +125,29 @@ class PostController extends Controller
         $response = auth()->user()->toggleLike($post);
 
         return response()->json(['success' => $response]);
+    }
+
+    /**
+     * Get images in edit post
+     *
+     * @param int $postId
+     * @return \Illuminate\Http\Response
+     *
+     */
+    public function getImageEditPost($postId)
+    {
+        $post = Post::findOrFail($postId);
+
+        $postImages = json_decode($post->image);
+
+        $html ='';
+
+        if ($postImages) {
+            $html = view('block.modals.image_edit', compact('post', 'postImages'));
+        }
+
+        return response()->json([
+            'html' => $html
+        ]);
     }
 }
