@@ -18,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct(UserService $userService, PostService $postService)
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','verified']);
         $this->userService = $userService;
         $this->postService = $postService;
     }

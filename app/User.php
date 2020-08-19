@@ -12,7 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Overtrue\LaravelFollow\Followable;
 use Overtrue\LaravelLike\Traits\Liker;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable, Followable, Liker;
 
