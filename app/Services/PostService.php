@@ -16,6 +16,10 @@ class PostService
         $this->activityService = $activityService;
     }
 
+    /**
+     * @param $request
+     * @return array ['title', 'image', 'type']
+     */
     public function getPostData($request)
     {
         return $request->only([
@@ -23,6 +27,22 @@ class PostService
             'image',
             'type'
         ]);
+    }
+
+    /**
+     * Get list user's followings
+     * @param App\User $user
+     * @param bool $isCurrentUser
+     * @return array
+     */
+    public function getListUsers($user, $isCurrentUser = true)
+    {
+        $userFollowIds = $user->followings->pluck('id');
+        if ($isCurrentUser) {
+            return $userFollowIds->push($user->id);
+        }
+
+        return[$user->id];
     }
 
     public function postImage($images)
@@ -63,14 +83,14 @@ class PostService
      * Get list post
      *
      * @param App\User $user
+     * @param boolean $isCurrentUser
      * @return \Illuminate\Http\Response
      */
-    public function getListPost($user)
+    public function getListPost($user, $isCurrentUser = true)
     {
-        $userIds = $user->followings()->pluck('follower_id');
-        $userIds[] = $user->id;
+        $listUserIds = $this->getListUsers($user, $isCurrentUser);
 
-        return Post::with('user')->whereIn('user_id', $userIds)->OrderBy('created_at', 'desc')->get();
+        return Post::with('user')->whereIn('user_id', $listUserIds)->OrderBy('created_at', 'desc')->paginate(config('home.page.number'));
     }
 
     /**
