@@ -116,7 +116,7 @@
                                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmEditModal{{ $post->id }}">{{ __('Edit post') }}</a>
                                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmDeleteModal{{ $post->id }}">{{ __('Delete post') }}</a>
                                         @else
-                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#unfollowUser{{  $user->id }}">{{ __('Stop following') }}</a>
+                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#unfollowUser">{{ __('Stop following') }}</a>
                                         @endif
                                     </div>
                                     @include('block.modals.edit_post')

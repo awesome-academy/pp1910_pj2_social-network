@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ActivityService;
 use App\Services\PostService;
 use App\Services\UserService;
 use App\User;
@@ -9,18 +10,24 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    protected $userService, $postService;
+    protected $userService;
+    protected $postService;
+    protected $activityService;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(UserService $userService, PostService $postService)
+    public function __construct(
+        UserService $userService,
+        PostService $postService,
+        ActivityService $activityService
+    )
     {
-        $this->middleware(['auth','verified']);
         $this->userService = $userService;
         $this->postService = $postService;
+        $this->activityService = $activityService;
     }
 
     /**
