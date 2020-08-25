@@ -15,19 +15,13 @@ class CommentController extends Controller
         $this->commentService = $commentService;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $data = $request->only([
             'post_id',
             'content'
         ]);
-        $data['user_id'] = auth()->user()->id;
+        $data['user_id'] = auth()->id();
 
         $comment = $this->commentService->storeComment($data);
 
@@ -37,7 +31,7 @@ class CommentController extends Controller
         if ($comment) {
             return response()->json([
                 'status' => true,
-                'comment' => view('block.comment-list', compact('comment', 'post', 'postId')),
+                'comment' => view('block.comment-list', compact('comment', 'post', 'postId'))->render(),
                 'count_comments' => $post->parentComments()->count(),
             ]);
         }

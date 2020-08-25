@@ -84,4 +84,14 @@ class User extends Authenticatable
     {
         return $this->gender == config('user.gender.female');
     }
+
+    /**
+     * Scope current user.
+     *
+     * @return Boolean
+     */
+    public function scopeIsCurrentUser()
+    {
+        return $this->id == auth()->id();
+    }
 }

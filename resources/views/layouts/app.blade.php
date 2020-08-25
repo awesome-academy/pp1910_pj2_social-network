@@ -22,6 +22,11 @@
 	<script src="{{ asset('assets/plugins/slimscroll/jquery.slimscroll.js') }}"></script>
     <script src="{{ asset('js/customs.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script type="text/javascript">
+         var currentUserId = "{{ auth()->id() }}";
+         var notificationCount = "{{ auth()->user()->notifications()->isNotReadCount() }}";
+    </script>
 	<script>
 		$('#Slim,#Slim2').slimScroll({
 				height:"auto",

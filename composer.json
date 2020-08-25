@@ -9,13 +9,16 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "doctrine/dbal": "^2.10",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0",
         "overtrue/laravel-follow": "^2.1",
-        "overtrue/laravel-like": "^2.0"
+        "overtrue/laravel-like": "^2.0",
+        "pusher/pusher-php-server": "^4.1"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.4",
         "facade/ignition": "^1.4",
         "fzaninotto/faker": "^1.9.1",
         "laravel/ui": "^1.0",

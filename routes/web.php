@@ -25,5 +25,6 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::resource('comments', 'CommentController');
     Route::post('like', 'PostController@likePost')->name('likePost');
     Route::get('posts/{post}/get-images', 'PostController@getImageEditPost');
+    Route::get('/notifications/show-notifications', 'NotificationController@getNotificationList')->name('getNotificationList');
 });
 
