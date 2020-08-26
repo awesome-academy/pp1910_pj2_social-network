@@ -9,7 +9,6 @@
     
     <link rel="icon" href="{{ asset('assets/img/logo.jpg') }}">
     <link type="text/css" href="{{ asset('assets/css/demos/photo.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
      @include('layouts.header')
@@ -23,6 +22,7 @@
     <script src="{{ asset('js/customs.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script src="{{ asset('assets/js/jquery.magnific-popup.js') }}"></script>
     <script type="text/javascript">
          var currentUserId = "{{ auth()->id() }}";
          var notificationCount = "{{ auth()->user()->notifications()->isNotReadCount() }}";
@@ -51,6 +51,43 @@
                 text: "@lang('Content can\'t be empty!')",
             });
         }
+
+        function zoomImage() {
+            $(".zoom-image").magnificPopup({
+                type: "image",
+                removalDelay: 500,
+                callbacks: {
+                    beforeOpen: function() {
+                        this.st.image.markup = this.st.image.markup.replace("mfp-figure", "mfp-figure mfp-with-anim"), this.st.mainClass = "mfp-zoom-in"
+                    }
+                },
+                closeOnContentClick: !0,
+                midClick: !0
+            });
+        }
+
+        function zoomGallery() {
+            $(".zoom-gallery").each(function() {
+                $(this).magnificPopup({
+                    delegate: "a",
+                    type: "image",
+                    gallery: {
+                        enabled: !0
+                    },
+                    removalDelay: 500,
+                    callbacks: {
+                        beforeOpen: function() {
+                            this.st.image.markup = this.st.image.markup.replace("mfp-figure", "mfp-figure mfp-with-anim"), this.st.mainClass = "mfp-zoom-in"
+                        }
+                    },
+                    closeOnContentClick: !0,
+                    midClick: !0
+                })
+            });
+        }
+
+        zoomImage();
+        zoomGallery();
 	</script>
 	@yield('script')
   </body>

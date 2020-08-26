@@ -67,23 +67,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    @foreach($posts as $post)
-                        @php
-                            $images = json_decode($post->image);
-                        @endphp
-                        @foreach($images as $key => $postImage)
-                            <div class="col-lg-6">
-                                <a href="#" data-toggle="modal" data-target="#{{ $post->id }}">
-                                    <div class="explorebox" >
-                                        <img class="img-profile" src="{{ asset('storage/images/posts/' . $postImage) }}" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                        @endforeach
-                        <div id="{{ $post->id }}" class="modal fade">
-                            @include('block.modals.post')
-                        </div>
-                    @endforeach
+                    @include('post.post')
                 </div>
                 <div class="col-lg-3">
                     <div class="trending-box">
@@ -93,7 +77,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="trending-box">
+                    <div class="trending-box zoom-gallery">
                         @if($postImages)
                             @foreach($postImages as $image)
                                 <div class="col-lg-6">
