@@ -117,17 +117,6 @@ class PostController extends Controller
     }
 
     /**
-     * Like post
-     */
-    public function likePost(Request $request)
-    {
-        $post = Post::find($request->id);
-        $response = auth()->user()->toggleLike($post);
-
-        return response()->json(['success' => $response]);
-    }
-
-    /**
      * Get images in edit post
      *
      * @param int $postId

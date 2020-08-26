@@ -157,10 +157,14 @@
                             <div class="cardbox-like">
                                 <ul>
                                     <li>
-                                        <a>
-                                            <i class="fa fa-thumbs-up likePost" aria-hidden="true" data-like="{{ $post->id }}"></i>
+                                        <a href="#" class="btn-react-post-like" data-post-id="{{ $post->id }}">
+                                            @if($post->likes()->where('user_id', auth()->id())->exists())
+                                                <i class="fas fa-thumbs-up not-like-post" aria-hidden="true"></i>
+                                            @else
+                                                <i class="far fa-thumbs-up like-post" aria-hidden="true"></i>
+                                            @endif
                                         </a>
-                                        <span> {{ $post->likers()->get()->count() }}</span>
+                                        <span class="react-this-post-{{ $post->id }} count-reacts"> {{ $post->likes()->count() }}</span>
                                     </li>
                                     <li>
                                         <a title="" class="com">
