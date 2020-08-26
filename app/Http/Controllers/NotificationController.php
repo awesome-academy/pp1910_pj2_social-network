@@ -26,4 +26,35 @@ class NotificationController extends Controller
             'html' => view('layouts.notification_block', compact('notifications'))->render()
         ]);
     }
+
+    /**
+     * Mark all notifications as read
+     *
+     * @return \Illuminate\Http\Response
+     *
+     */
+    public function markAllAsRead()
+    {
+        $markAllNotification = $this->notificationService->markAllAsRead(auth()->id());
+        $notifications = $this->notificationService->getPostNotificationById(auth()->id());
+
+        if ($markAllNotification) {
+            return response()->json([
+                'status' => true,
+                'html' => view('layouts.notification_block', compact('notifications'))->render()
+            ]);
+        }
+    }
+
+    /**
+     * Show all notification
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showAllNotification()
+    {
+        $notifications = $this->notificationService->getPostNotificationById(auth()->id());
+
+        return view('notification.index', compact('notifications'));
+    }
 }

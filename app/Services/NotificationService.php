@@ -71,4 +71,34 @@ class NotificationService
 
         return true;
     }
+
+    /**
+     * Get all unread notifications
+     *
+     * @param Int $userId
+     * @param Int $postId
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function getUnReadNotification($userId, $postId)
+    {
+        return Notification::where(['post_id' => $postId, 'user_id' => $userId, 'is_read' => config('notification.is_not_read')]);
+    }
+
+    /**
+     * Mark all as Read
+     *
+     * @return Boolean
+     */
+    public function markAllAsRead($userId)
+    {
+        try {
+            Notification::where('receiver_id', $userId)->update(['is_read' => true]);
+        } catch (\Throwable $th) {
+            Log::error($th);
+
+            return false;
+        }
+
+        return true;
+    }
 }
