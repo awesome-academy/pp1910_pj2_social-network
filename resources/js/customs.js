@@ -284,7 +284,30 @@ $(document).ready(function () {
                 errorMessage();
             }
         })
-    })
+    });
+
+    $('.mark-all-as-read').on('click', function (event) {
+        event.preventDefault();
+        var url = '/notifications/mark-all';
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            cache: false,
+            success: function (result) {
+                if (result.status) {
+                    $('.notification-block').html('');
+                    $('.notification-block').append(result.html);
+
+                    notificationCount = 0;
+                    notificationNumber.hide();
+                }
+            },
+            error: function () {
+                errorMessage();
+            }
+        });
+    });
 });
 $(document).ready(function () {
     $.ajaxSetup({

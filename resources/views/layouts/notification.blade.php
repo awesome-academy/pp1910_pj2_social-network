@@ -23,6 +23,6 @@
                 <div class="slimScrollRail"></div>
             </div>
         </div>
-        <a href="#" class="dropdown-item text-center notify-all">{{ __('View all') }} <i class="fa fa-arrow-right"></i></a>
+        <a href="{{ route('notifications.show_all') }}" class="dropdown-item text-center notify-all">{{ __('View all') }} <i class="fa fa-arrow-right"></i></a>
     </div>
 </li>
