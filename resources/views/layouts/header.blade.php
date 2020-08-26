@@ -27,36 +27,7 @@
                         </div>
                     </li>
 
-                    <li class="dropdown notification-list">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <i class="fa fa-bell noti-icon"></i>
-                            <span class="badge badge-danger badge-pill noti-icon-badge">4</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-                            <div class="dropdown-item noti-title">
-                                <h6 class="m-0">
-                                    <span class="pull-right">
-                                        <a href="" class="text-dark"><small>{{ __('Clear All') }}</small></a>
-                                    </span>
-                                    {{ __('Notification') }}
-                                </h6>
-                            </div>
-
-                            <div class="slimScrollDiv">
-                                <div class="slimscroll">
-                                    <div id="Slim">
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                            <div class="notify-icon bg-success"><i class="fa fa-comment"></i></div>
-                                            <p class="notify-details">Caleb Flakelar commented on Admin<small class="text-muted">1 min ago</small></p>
-                                        </a>
-                                    </div>
-                                    <div class="slimScrollBar"></div>
-                                    <div class="slimScrollRail"></div>
-                                </div>
-                            </div>
-                            <a href="photo_notifications.html" class="dropdown-item text-center notify-all">View all <i class="fa fa-arrow-right"></i></a>
-                        </div>
-                    </li>
+                    @include('layouts.notification')
                     <li class="dropdown mega-avatar">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                         <span class="avatar w-32"><img src="{{ getAvatar(auth()->user()->avatar) }}" class="img-resonsive img-circle" width="25" height="25" alt="avatar" onerror="this.src='{{ asset('assets/img/avatar.png') }}'"></span>

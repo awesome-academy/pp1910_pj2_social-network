@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Notification extends Model
@@ -17,7 +18,7 @@ class Notification extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'sender_id');  
+        return $this->belongsTo(User::class, 'sender_id');
     }
 
     public function post()
@@ -28,5 +29,88 @@ class Notification extends Model
     public function comment()
     {
         return $this->belongsTo(Comment::class, 'comment_id');
+    }
+
+    /**
+     * Relationship with User(sender)
+     */
+    public function sender()
+    {
+        return $this->belongsTo(User::class, 'sender_id');
+    }
+
+    /**
+     * Relationship with User(receiver)
+     */
+    public function receiver()
+    {
+        return $this->belongsTo(User::class, 'receiver_id');
+    }
+
+    /**
+     * Scope notification of descending order
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     *
+     */
+    public function scopeOrderDesc($query)
+    {
+        return $query->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Scope for get notifications that is not read.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     *
+     */
+    public function scopeIsNotReadCount($query)
+    {
+        return $query->where('is_read', config('notification.is_not_read'))->count();
+    }
+
+    /**
+     * Scope if notification is read or not.
+     *
+     * @return boolean
+     *
+     */
+    public function scopeIsRead()
+    {
+        return $this->is_read;
+    }
+
+    /**
+     * Scope if notification type is a liked.
+     *
+     * @return Boolean
+     */
+    public function scopeIsLike()
+    {
+        return $this->type == config('notification.type.like');
+    }
+
+    /**
+     * Scope if notification type is a comment.
+     *
+     * @return Boolean
+     */
+    public function scopeIsComment()
+    {
+        return $this->type == config('notification.type.comment');
+    }
+
+    /**
+     * Scope for get all unread notifications with post of current user.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param Int $postId
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeGetUnReadNotifications($query, $postId)
+    {
+        return $query->where(['post_id' => $postId, 'receiver_id' => auth()->id(), 'is_read' => config('notification.is_not_read')]);
     }
 }

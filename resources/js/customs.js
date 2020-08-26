@@ -151,8 +151,6 @@ $(document).ready(function() {
         setTimeout(carousel, 3000);
     }
 
-    ajaxSetup();
-
     var changed = false;
 
     $('.edit-post-form').change(function () {
@@ -256,3 +254,50 @@ $(document).ready(function() {
     });
 
 });
+$(document).ready(function () {
+    var notificationNumber = $('.notification-count');
+    notificationCount = parseInt(notificationCount);
+
+    if (notificationCount == 0) {
+        notificationNumber.hide();
+    } else {
+        notificationNumber.text(notificationCount);
+    }
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('fa969bf3e498362c0eab', {
+        cluster: 'ap1',
+        forceTLS: true
+    });
+
+    var channel = pusher.subscribe('fluffs' + '_' + currentUserId);
+    channel.bind('notification-event', function() {
+        if (notificationCount == 0) {
+            notificationNumber.show();
+        }
+
+        notificationCount++;
+
+        notificationNumber.text(notificationCount);
+    });
+
+    // Show notification
+    $('.dropdown-notifications').on('show.bs.dropdown', function () {
+        var url = 'notifications/show-notifications';
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            cache: false,
+            success: function (result) {
+                $('.notification-block').html('');
+                $('.notification-block').append(result.html);
+            },
+            error: function () {
+                errorMessage();
+            }
+        })
+    })
+})

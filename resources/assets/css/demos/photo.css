@@ -2535,3 +2535,6 @@ a.navbar-brand:hover {
 .edit-post-button {
     float: right;
 }
+.notification-block{
+    padding: 0;
+}
