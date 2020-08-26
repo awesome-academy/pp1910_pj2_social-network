@@ -5,16 +5,15 @@ namespace App;
 use App\Models\Comment;
 use App\Models\Notification;
 use App\Models\Post;
-use App\Models\React;
+use App\Models\Like;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Overtrue\LaravelFollow\Followable;
-use Overtrue\LaravelLike\Traits\Liker;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable, Followable, Liker;
+    use Notifiable, Followable;
 
     /**
      * The attributes that are mass assignable.
@@ -70,7 +69,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function reacts()
     {
-        return $this->hasMany(React::class);
+        return $this->hasMany(Like::class);
     }
 
     /**

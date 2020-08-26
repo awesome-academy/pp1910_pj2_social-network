@@ -119,21 +119,6 @@ $(document).ready(function() {
             errorImages();
         }
     });
-    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-    $(".likePost").click(function(){
-        $.ajax({
-            url: 'like',
-            type: 'POST',
-            data: {
-                _token: CSRF_TOKEN,
-                id: $(this).data("like"),
-            },
-            dataType: 'JSON',
-            success: function() {
-                location.reload();
-            }
-        });
-    });
     var myIndex = 0;
     carousel();
 
@@ -300,4 +285,64 @@ $(document).ready(function () {
             }
         })
     })
+});
+$(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('body').on('click', '.btn-react-post-like', function () {
+        event.preventDefault();
+
+        var _this = $(this);
+        var reactClass = '.like-post';
+        var unReactClass = '.not-like-post';
+
+        reactAjax(reactClass, unReactClass, _this);
+    });
+    function reactAjax(reactClass, unReactClass, reactElement) {
+        var reactableId = parseInt(reactElement.data('post-id'));
+        var react = reactElement.find(reactClass);
+        var unReact = reactElement.find(unReactClass);
+
+        $.ajax({
+            url: '/likes',
+            type: 'POST',
+            data: {
+                'likeable_id': reactableId
+            },
+            cache: false,
+            success: function (result) {
+                if (result.status) {
+                    if (!unReact.attr('hidden')) {
+                        unReact.attr('hidden', '');
+                    } else {
+                        unReact.removeAttr('hidden');
+                    }
+
+                    if (react.attr('hidden')) {
+                        react.removeAttr('hidden');
+                    } else {
+                        react.attr('hidden', '');
+                    }
+
+                    if (result.count_react == 1) {
+                        $('.react-this-post-' + reactableId).removeAttr('hidden');
+                    } else if (result.count_react == 0) {
+                        $('.react-this-post-' + reactableId).attr('hidden', '');
+                    }
+
+                    reactElement.parent().parent().find('.count-reacts').text(result.count_react);
+                    userReact.html();
+                    userReact.html(result.view);
+                } else {
+                    errorMessage();
+                }
+            },
+            error: function () {
+                errorMessage();
+            }
+        });
+    }
 })

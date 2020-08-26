@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Overtrue\LaravelLike\Traits\Likeable;
 
 class Post extends Model
 {
-    use SoftDeletes, Likeable;
+    use SoftDeletes;
 
     protected $fillable = [
         'user_id',
@@ -29,6 +28,11 @@ class Post extends Model
     public function parentComments()
     {
         return $this->hasMany(Comment::class)->whereNull('parent_id');
+    }
+
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likeable');
     }
 
 }

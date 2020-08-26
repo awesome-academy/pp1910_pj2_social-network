@@ -23,7 +23,7 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::post('/{username}/update-avatar', 'ProfileController@updateAvatar')->name('user.updateAvatar');
     Route::post('follow', 'HomeController@followUserRequest')->name('user.follow');
     Route::resource('comments', 'CommentController');
-    Route::post('like', 'PostController@likePost')->name('likePost');
+    Route::resource('likes', 'LikeController');
     Route::get('posts/{post}/get-images', 'PostController@getImageEditPost');
     Route::get('/notifications/show-notifications', 'NotificationController@getNotificationList')->name('getNotificationList');
 });

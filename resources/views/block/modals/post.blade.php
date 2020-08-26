@@ -43,7 +43,7 @@
                         </ul>
                         <div class="modal-meta-bottom">
                             <ul>
-                                <li><a class="modal-like"><i class="fa fa-heart"></i></a><span class="modal-one"> {{ $post->likers()->get()->count() }}</span> |
+                                <li><a class="modal-like"><i class="fa fa-heart"></i></a><span class="modal-one"> {{ $post->likes()->count() }}</span> |
                                     <a class="modal-comment" href="#"><i class="fa fa-comments"></i></a><span> {{ $post->allComments()->get()->count() }}</span> </li>
                                 <li>
                                     <form class="post-{{ $post->id }}">
