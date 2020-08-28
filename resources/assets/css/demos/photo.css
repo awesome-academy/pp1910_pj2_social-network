@@ -3101,3 +3101,23 @@ img.mfp-img {
 .notification-block{
     padding: 0;
 }
+/* ==========================================================================
+   Setting Page
+   ========================================================================== */
+.setting-page {
+    padding-top: 30px;
+}
+.per-info {
+    margin-top: 27px;
+}
+.setting-body {
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.input-width {
+    width: 320px;
+}
+.user-name {
+    color: #337ab7
+}
