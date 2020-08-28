@@ -44,6 +44,14 @@
 
             location.reload();
         }
+        function successFollow() {
+            swal.fire({
+                title: "Successfully!",
+                icon: 'success',
+            });
+
+            location.reload();
+        }
 
         function errorEmptyContent() {
             Swal.fire({

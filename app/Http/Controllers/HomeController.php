@@ -37,10 +37,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = User::where('id', '!=', auth()->user()->id)->get();
         $posts = $this->postService->getListPost(auth()->user());
+        $suggestUsers = $this->userService->getListNotFollow(auth()->user(), config('user.suggestion_follow'));
 
-        return view('home', compact('users', 'posts'));
+        return view('home', compact('posts', 'suggestUsers'));
     }
 
     /**
@@ -50,10 +50,12 @@ class HomeController extends Controller
      */
     public function followUserRequest(Request $request)
     {
-        $user = User::find($request->user_id);
+        $user = User::findOrFail($request->user_id);
         $response = auth()->user()->toggleFollow($user);
 
 
-        return response()->json(['success'=>$response]);
+        return response()->json([
+            'success'=>$response
+        ]);
     }
 }
