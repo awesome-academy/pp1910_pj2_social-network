@@ -63,8 +63,12 @@
                             </div>
                         </div>
                         <div class="col-lg-3">
-                            <div class="follow-box">
-                                <a href="" class="kafe-btn kafe-btn-mint"><i class="fa fa-check"></i> Following</a>
+                            <div class="follow-box action-follow" data-id="{{ $user->id }}">
+                                @if(auth()->user()->isFollowing($user))
+                                    <a href="" class="kafe-btn kafe-btn-mint"><i class="fa fa-check"></i> {{ __('Following') }}</a>
+                                @else
+                                    <a href="" class="kafe-btn kafe-btn-mint"> {{ __('Follow') }}</a>
+                                @endif
                             </div>
                         </div>
                     </div>

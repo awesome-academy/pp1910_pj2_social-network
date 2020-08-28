@@ -107,30 +107,14 @@
                     @include('post.post')
                 </div>
                 <div class="col-lg-3">
-                    <div class="suggestion-box full-width">
-                        <div class="suggestions-list">
-                            @foreach($users as $user)
-                                <div class="suggestion-body">
-                                    <img class="img-responsive img-circle" src="{{ getAvatar($user->avatar) }}" alt="Image">
-                                    <div class="name-box">
-                                        <h4>{{ $user->name }}</h4>
-                                        <span>{{ '@'.$user->username }}</span>
-                                    </div>
-                                    <span>
-                                        <button class="btn btn-info btn-sm action-follow" data-id="{{ $user->id }}">
-                                            <strong>
-                                                @if(auth()->user()->isFollowing($user))
-                                                    {{ __('UnFollow') }}
-                                                @else
-                                                    {{ __('Follow') }}
-                                                @endif
-                                            </strong>
-                                        </button>
-                                    </span>
-                                </div>
-                            @endforeach
+                    <div class="trending-box">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>{{ __('Suggest User') }}</h4>
+                            </div>
                         </div>
                     </div>
+                    @include('block.suggest_user')
 
                     <div class="trending-box">
                         <div class="row">

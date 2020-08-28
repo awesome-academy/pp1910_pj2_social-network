@@ -53,4 +53,18 @@ class UserService
 
         return true;
     }
+
+    /**
+     * Get list user not following
+     *
+     * @param App\User $user
+     * @return Collection
+     */
+    public function getListNotFollow($user, $limit = 1)
+    {
+        $listFollowId = $user->followings->pluck('id')->push($user->id);
+        $suggestionFollow = User::isVerified()->whereNotIn('id', $listFollowId)->inRandomOrder()->limit($limit)->get();
+
+        return $suggestionFollow;
+    }
 }

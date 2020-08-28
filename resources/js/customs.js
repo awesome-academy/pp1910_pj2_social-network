@@ -34,24 +34,6 @@ $(document).ready(function() {
         }
     });
 
-    $('.action-follow').click(function(){
-        var user_id = $(this).data('id');
-        var cObj = $(this);
-
-        $.ajax({
-            type:'POST',
-            url:'/follow',
-            data:{ user_id: user_id },
-            success: function (data) {
-                if (jQuery.isEmptyObject (data.success.attached)) {
-                    cObj.find("strong").text("Follow");
-                } else{
-                    cObj.find("strong").text("UnFollow");
-                }
-            }
-        });
-    });
-
     $('body').on('click', '.store-comment', function (event) {
         event.preventDefault();
 
@@ -368,4 +350,23 @@ $(document).ready(function () {
             }
         });
     }
+})
+
+$(document).ready(function () {
+    $('.action-follow').click(function(){
+        var user_id = $(this).data('id');
+        var cObj = $(this);
+
+        $.ajax({
+            type:'POST',
+            url:'/follow',
+            data:{ user_id: user_id },
+            success: function (data) {
+                successFollow();
+            },
+            error: function () {
+                errorMessage();
+            }
+        });
+    });
 })

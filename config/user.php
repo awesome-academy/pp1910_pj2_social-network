@@ -6,4 +6,5 @@ return [
         'female' => 2
     ],
     'last_photo' => 6,
+    'suggestion_follow' => 3
 ];
