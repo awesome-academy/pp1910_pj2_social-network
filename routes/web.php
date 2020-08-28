@@ -28,5 +28,6 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::get('/notifications/show-notifications', 'NotificationController@getNotificationList')->name('getNotificationList');
     Route::get('/notifications/show-all', 'NotificationController@showAllNotification')->name('notifications.show_all');
     Route::post('/notifications/mark-all', 'NotificationController@markAllAsRead')->name('notifications.mark_all');
+    Route::get('comment/load-more', 'CommentController@viewMoreComment')->name('comments.viewMoreComment');
 });
 

@@ -2,8 +2,8 @@
 
 return [
     'comment' => [
-        'paginate' => 4,
-        'max' => 5,
+        'paginate' => 3,
+        'max' => 3,
     ],
     'minutes_between' => 5
 ];

@@ -51,7 +51,7 @@
                                             <img class="img-responsive img-circle" src="{{ getAvatar(auth()->user()->avatar) }}" alt="{{ auth()->user()->name }}">
                                         </span>
                                         <div class="comment-body">
-                                            <input class="form-control input-sm comment-content" type="text" placeholder="Write your comment...">
+                                            <input class="form-control input-sm comment-content" placeholder="Write your comment...">
                                             <button class="btn btn-md-2 btn-primary store-comment" data-post_id="{{ $post->id }}">{{ __('Comment') }}</button>
                                         </div>
                                     </form>
