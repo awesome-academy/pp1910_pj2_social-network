@@ -35,4 +35,9 @@ class Post extends Model
         return $this->morphMany(Like::class, 'likeable');
     }
 
+    public function latestComment()
+    {
+        return $this->hasMany(Comment::class)->whereNull('parent_id')->latest()->first();
+    }
+
 }

@@ -48,8 +48,24 @@
                 </li>
             </ul>
         </div>
-    </div>
-    <div id="{{ $post->id }}" class="modal fade">
-        @include('block.modals.post')
+        @php
+            $lastParentComment = $post->latestComment();
+        @endphp
+
+        @if ($post->allComments()->count() > config('post.comment.max'))
+            <a href="#" class="more-comments post-{{ $post->id }}" data-post-id="{{ $post->id }}" data-page="1">{{ __('View more comment') }}</a>
+        @endif
+        <ul class="comments-list post-{{ $post->id }}">
+            @include('block.comment-list')
+        </ul>
+        <form class="comment-form inline-items post-{{ $post->id }}">
+            <div class="post__author author vcard inline-items">
+                <img src="{{ getAvatar(auth()->user()->avatar) }}" alt="{{ auth()->user()->name }}">
+                <div class="form-group with-icon-right ">
+                    <input class="form-control comment-content" placeholder="Write your comment...">
+                </div>
+            </div>
+            <button class="btn btn-md-2 btn-primary store-comment" data-post_id="{{ $post->id }}"> @lang('Post Comment') </button>
+        </form>
     </div>
 @endforeach

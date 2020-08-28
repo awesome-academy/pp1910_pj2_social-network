@@ -31,7 +31,7 @@ class CommentController extends Controller
         if ($comment) {
             return response()->json([
                 'status' => true,
-                'comment' => view('block.comment-list', compact('comment', 'post', 'postId'))->render(),
+                'comment' => view('block.comment', compact('comment', 'post', 'postId'))->render(),
                 'count_comments' => $post->parentComments()->count(),
             ]);
         }
@@ -85,5 +85,39 @@ class CommentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * View more comment
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function viewMoreComment(Request $request)
+    {
+        $postId = $request->post_id;
+
+        $post = Post::findOrFail($postId);
+
+        if ($post) {
+            $comments = $post->parentComments()->orderBy('created_at', 'desc')->paginate(config('post.comment.paginate'));
+
+            $moreComments = $comments->sortBy('created_at');
+
+            $html = '';
+
+            if ($moreComments->count() > 0) {
+                $html = view('block.comment-list', compact('post', 'moreComments'))->render();
+            }
+
+            return response()->json([
+                'status' => true,
+                'html' => $html,
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+        ]);
     }
 }
