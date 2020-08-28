@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid setting-page">
         <div class="row">
             @include('settings.menu')
             @include('settings.password.main')

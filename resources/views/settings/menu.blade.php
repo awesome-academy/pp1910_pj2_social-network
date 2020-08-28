@@ -9,12 +9,10 @@
                 </div>
             </li>
             <li>
-                <small class="text-muted"><a href="{{ route('user.getProfile') }}">Personal Infromation <em class="fa fa-angle-right pull-right"></em></a> </small><br/>
-                <small class="text-muted"><a href="{{ route('user.getChangePassword') }}">Change Password <em class="fa fa-angle-right pull-right"></em></a> </small><br/>
+                <small class="text-muted"><a href="{{ route('user.getProfile') }}">{{ __('Personal Information' )}} <em class="fa fa-angle-right pull-right"></em></a> </small><br/>
+                <small class="text-muted"><a href="{{ route('user.getChangePassword') }}">{{ __('Change Password') }} <em class="fa fa-angle-right pull-right"></em></a> </small><br/>
                 <hr>
-                <small class="text-muted"><a href="#">Notifications <em class="fa fa-angle-right pull-right"></em></a> </small><br/>
-                <hr>
-                <small class="text-muted">Website: </small>
+                <small class="text-muted"><a href="#">{{ __('Notifications') }} <em class="fa fa-angle-right pull-right"></em></a> </small><br/>
                 <hr>
             </li>
         </ul>
