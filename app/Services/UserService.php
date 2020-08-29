@@ -67,4 +67,15 @@ class UserService
 
         return $suggestionFollow;
     }
+
+    /**
+     * @param $inputString
+     * @return mixed
+     */
+    public function getSearchPeopleList($inputString)
+    {
+        return User::isVerified()->where('id', '!=', auth()->id())
+            ->where('name', 'LIKE', '%' . $inputString . '%')
+            ->paginate(config('user.search'));
+    }
 }

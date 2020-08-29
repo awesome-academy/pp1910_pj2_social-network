@@ -21,9 +21,11 @@
                     <li>
                         <div class="search-dashboard">
                             <form>
-                                <input placeholder="Search here" type="text">
+                                <input class="search-people-input dropdown-toggle" name="name" placeholder="Search here" type="text" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" autocomplete="off">
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
+                            <div class="selectize-dropdown multi form-control dropdown-menu search-people-result" aria-labelledby="searchPeople">
+                            </div>
                         </div>
                     </li>
 

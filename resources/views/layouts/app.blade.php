@@ -42,7 +42,7 @@
                 text: "@lang('Something went wrong!')",
             });
 
-            location.reload();
+            //location.reload();
         }
         function successFollow() {
             swal.fire({

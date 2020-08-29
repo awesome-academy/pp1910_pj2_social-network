@@ -3121,3 +3121,39 @@ img.mfp-img {
 .user-name {
     color: #337ab7
 }
+/* ==========================================================================
+   Search
+   ========================================================================== */
+.search-dashboard .selectize-dropdown-content > * {
+    cursor: pointer;
+}
+.search-dashboard .selectize-dropdown-content > * {
+    padding: 5px;
+    border-bottom: 1px solid #e6ecf5;
+    display: block;
+    position: relative;
+    transition: all .3s ease;
+    background-color: whitesmoke;
+}
+.selectize-dropdown-content > * {
+    margin-bottom: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+.search-dashboard .author-thumb {
+    height: 40px;
+    width: 40px;
+}
+.author-thumb img {
+    border-radius: 100%;
+    overflow: hidden;
+    max-width: unset;
+    display: block;
+}
+.default-avatar {
+    width: 36px;
+    height: 36px;
+}
+.notification-friend {
+    text-transform: capitalize;
+}
