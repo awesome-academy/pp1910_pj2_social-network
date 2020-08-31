@@ -22,14 +22,14 @@
                                 </div>
                             </li>
                             <li>
-                                <small class="text-muted"><a href="#">{{ $user->posts()->get()->count() }} Posts </a> </small><br/>
-                                <small class="text-muted"><a href="#">{{ $user->followers()->get()->count() }} Followers </a> </small><br/>
-                                <small class="text-muted"><a href="#">{{ $user->followings()->get()->count() }} Following </a> </small>
+                                <small class="text-muted"><a href="#">{{ $user->posts()->get()->count() }} {{ __('Posts') }} </a> </small><br/>
+                                <small class="text-muted"><a href="#">{{ $user->followers()->get()->count() }} {{ __('Followers') }} </a> </small><br/>
+                                <small class="text-muted"><a href="#">{{ $user->followings()->get()->count() }} {{ __('Followings') }} </a> </small>
                                 <hr>
-                                <small class="text-muted">Birthday: </small>
+                                <small class="text-muted">{{ __('Birthday') }}: </small>
                                 <p>{{ auth()->user()->birthday }}</p>
                                 <hr>
-                                <small class="text-muted">Address: </small>
+                                <small class="text-muted">{{ __('Address') }}: </small>
                                 <p>{{ auth()->user()->address }}</p>
                                 <hr>
                             </li>

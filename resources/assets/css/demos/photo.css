@@ -3157,3 +3157,10 @@ img.mfp-img {
 .notification-friend {
     text-transform: capitalize;
 }
+.language {
+    border: none;
+    appearance: none;
+    padding: 0 5px;
+    background: none;
+    font-family: auto;
+}

@@ -58,11 +58,11 @@
                     <div class="box">
                         <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <input class="form-control no-border" rows="3" name="title" placeholder="Type something...">
+                            <input class="form-control no-border" rows="3" name="title" placeholder="{{ __('Type something...' )}}">
                             <div class="box-footer clearfix">
                                 <ul class="nav nav-pills nav-sm">
                                     <li class="nav-item">
-                                        <a href="#" class="options-message" data-toggle="tooltip" data-placement="top" data-original-title="@lang('ADD PHOTOS')">
+                                        <a href="#" class="options-message" data-toggle="tooltip" data-placement="top" data-original-title="{{ __('ADD PHOTOS') }}">
                                             <label for="upload-image" class="display-inline">
                                                 <i class="fa fa-camera text-muted"></i>
                                             </label>
@@ -86,6 +86,20 @@
                         </div>
                     </div>
                     @include('block.suggest_user')
+                    <div class="trending-box">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form action="{{ route('language') }}" method="post">
+                                    @csrf
+                                    <label><h4>{{ __('Language') }}</h4></label>
+                                    <select name="language" class="language" onchange='this.form.submit()'>
+                                        <option value="{{ config('user.language.en') }}" {{ auth()->user()->language == config('user.language.en') ? 'selected' : '' }}>{{ __('English') }}</option>
+                                        <option value="{{ config('user.language.vi') }}" {{ auth()->user()->language == config('user.language.vi') ? 'selected' : '' }}>{{ __('Vietnamese') }}</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

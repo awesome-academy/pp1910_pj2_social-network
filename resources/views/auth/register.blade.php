@@ -18,7 +18,7 @@
                 @csrf
                     <h3 class="form-signin-heading">{{ __('Please register') }}</h3>
                     <div class="form-group">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email" placeholder="Email">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email" placeholder="{{ __('Email') }}">
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -26,13 +26,13 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input name="username" type="text" class="form-control" placeholder="User Name">
+                        <input name="username" type="text" class="form-control" placeholder="{{ __('User Name') }}">
                     </div>
                     <div class="form-group">
-                        <input name="name" type="text" class="form-control" placeholder="Name">
+                        <input name="name" type="text" class="form-control" placeholder="{{ __('Name') }}">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" name='password' required placeholder="Password">
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" name='password' required placeholder="{{ __('Password') }}">
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -40,7 +40,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control form-control-user" name='password_confirmation' required placeholder="Confirm Password">
+                        <input type="password" class="form-control form-control-user" name='password_confirmation' required placeholder="{{ __('Confirm Password') }}">
                     </div>
                         <button class="kafe-btn kafe-btn-mint btn-block" type="submit" name="subm">{{ __('Sign Up') }}</button>
                     <br/>

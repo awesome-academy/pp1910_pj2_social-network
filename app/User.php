@@ -102,4 +102,16 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $query->whereNotNull('email_verified_at');
     }
+
+    /**
+     * Get choose language
+     *
+     * @return String
+     */
+    public function setUserLanguage()
+    {
+        $languages = array_flip(config('user.language'));
+
+        return $languages[$this->language];
+    }
 }

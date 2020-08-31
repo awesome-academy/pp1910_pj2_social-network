@@ -86,7 +86,7 @@ class UserController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function getSearchPeoplelist(Request $request)
     {
@@ -100,5 +100,24 @@ class UserController extends Controller
                 'html' => view('block.widgets.search_block', compact('searchData'))->render()
             ]);
         }
+    }
+
+    public function language(Request $request)
+    {
+        $currentId = auth()->id();
+        $data = $request->only('language');
+        $changeLanguage = $this->userService->updateUser($currentId, $data);
+
+        if ($changeLanguage) {
+            $keyLanguage = array_search(
+                $data['language'],
+                config('user.language')
+            );
+            app()->setLocale($keyLanguage);
+
+            return redirect()->back()->with('success', __('Change language successfully'));
+        }
+
+        return redirect()->back()->with('error', __('Error'));
     }
 }
