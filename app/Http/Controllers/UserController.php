@@ -83,4 +83,22 @@ class UserController extends Controller
             return back()->with('error', __('Something went wrong!'));
         }
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function getSearchPeoplelist(Request $request)
+    {
+        if ($request->ajax()) {
+            $inputString = $request->name;
+
+            $searchData = $this->userService->getSearchPeopleList($inputString);
+
+            return response()->json([
+                'count' => $searchData->count(),
+                'html' => view('block.widgets.search_block', compact('searchData'))->render()
+            ]);
+        }
+    }
 }
