@@ -62,7 +62,7 @@
             <div class="post__author author vcard inline-items">
                 <img src="{{ getAvatar(auth()->user()->avatar) }}" alt="{{ auth()->user()->name }}">
                 <div class="form-group with-icon-right ">
-                    <input class="form-control comment-content" placeholder="Write your comment...">
+                    <input class="form-control comment-content" placeholder="{{ __('Write your comment...') }}">
                 </div>
             </div>
             <button class="btn btn-md-2 btn-primary store-comment" data-post_id="{{ $post->id }}"> @lang('Post Comment') </button>

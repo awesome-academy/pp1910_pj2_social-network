@@ -4,7 +4,7 @@
             <li>
                 <div class="user-info">
                     <div class="detail">
-                        <h4>Your Profile</h4>
+                        <h4>{{ __('Your Profile') }}</h4>
                     </div>
                 </div>
             </li>

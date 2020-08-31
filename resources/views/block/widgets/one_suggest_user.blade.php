@@ -6,9 +6,9 @@
     </div>
     <span class="action-follow" data-id="{{ $user->id }}">
         @if(auth()->user()->isFollowing($user))
-            <i class="fa fa-window-close" title="UnFollow this user"></i>
+            <i class="fa fa-window-close" title="{{ __('UnFollow this user') }}"></i>
         @else
-            <i class="fa fa-plus" title="Follow this user"></i>
+            <i class="fa fa-plus" title="{{ __('Follow this user') }}"></i>
         @endif
     </span>
 </div>

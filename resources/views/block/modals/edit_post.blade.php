@@ -30,13 +30,13 @@
                                     @include('block.modals.image_edit')
                                 </div>
                                 <div class="add-options-message edit-image-message">
-                                    <a href="#" class="options-message edit-image-message" data-toggle="tooltip" data-placement="top" data-original-title="@lang('ADD PHOTOS')" data-post-id="{{ $post->id }}">
+                                    <a href="#" class="options-message edit-image-message" data-toggle="tooltip" data-placement="top" data-original-title="{{ __('ADD PHOTOS') }}" data-post-id="{{ $post->id }}">
                                         <label class="display-inline" for="upload-image">
                                             <i class="fa fa-image"></i>
                                             <input id="upload-image" class="edit-image-input post-{{ $post->id }} form-control @error('image') is-invalid @enderror" style="display: none" data-post-id="{{ $post->id }}" type="file" name="image[]" accept="image/*" multiple>
                                         </label>
                                     </a>
-                                    <a href="#" class="remove-image display-none post-{{ $post->id }}" data-post-id="{{ $post->id }}" data-toggle="tooltip" title="@lang('REMOVE ALL IMAGES')">
+                                    <a href="#" class="remove-image display-none post-{{ $post->id }}" data-post-id="{{ $post->id }}" data-toggle="tooltip" title="{{ __('REMOVE ALL IMAGES') }}">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                     <button type="submit" class="btn btn-primary btn-md-2 edit-post-button"> {{ __('Accept Changes') }} </button>
