@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommentRequest;
 use App\Models\Post;
 use App\Services\CommentService;
 use Illuminate\Http\Request;
@@ -15,7 +16,12 @@ class CommentController extends Controller
         $this->commentService = $commentService;
     }
 
-    public function store(Request $request)
+    /**
+     * @param CommentRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Throwable
+     */
+    public function store(CommentRequest $request)
     {
         $data = $request->only([
             'post_id',
@@ -40,28 +46,6 @@ class CommentController extends Controller
             'status' => false,
         ]);
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
