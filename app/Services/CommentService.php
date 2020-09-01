@@ -69,4 +69,28 @@ class CommentService
 
         return $comment;
     }
+
+    /**
+     * Delete comment
+     *
+     * @param Int $id
+     * @return Boolean
+     */
+    public function deleteComment($id)
+    {
+        $comment = Comment::findOrFail($id);
+        if ($comment->user_id != auth()->id()) {
+            return false;
+        }
+
+        try {
+            $comment->delete();
+        } catch (\Throwable $th) {
+            Log::error($th);
+
+            return false;
+        }
+
+        return true;
+    }
 }

@@ -64,18 +64,24 @@ class CommentController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $comment = $this->commentService->deleteComment($id);
+
+        if ($comment) {
+            return redirect()->back()->with('success', 'Delete comment successfully!');
+        }
+
+        return redirect()->back()->with('error', 'Delete comment error!');
     }
 
     /**
      * View more comment
      *
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function viewMoreComment(Request $request)
     {
