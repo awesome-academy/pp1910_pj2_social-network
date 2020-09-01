@@ -12,28 +12,12 @@ class PostController extends Controller
 {
     protected $postService;
 
+    /**
+     * PostController constructor.
+     */
     public function __construct(PostService $postService)
     {
         $this->postService = $postService;
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -64,7 +48,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -77,11 +61,11 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  PostRequest $request
+     * @param  Int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
         $data = $this->postService->getPostData($request);
         $data['user_id'] = auth()->user()->id;

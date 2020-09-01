@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileRequest;
 use App\Services\PostService;
 use App\Services\ProfileService;
 use App\User;
@@ -40,7 +41,11 @@ class ProfileController extends Controller
         return view('profile.index', compact('user', 'posts', 'postImages'));
     }
 
-    public function updateAvatar(Request $request)
+    /**
+     * @param ProfileRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateAvatar(ProfileRequest $request)
     {
         $user = auth()->user();
         $data = $request->only([
