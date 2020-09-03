@@ -3,7 +3,7 @@
 @else
     @foreach($notifications as $notification)
         <li @if($notification->isRead()) class="notification-background" @endif>
-            <a href="javascript:void(0);" class="dropdown-item notify-item">
+            <a class="dropdown-item notify-item">
                 <div class="notify-icon bg-success">
                     <img src="{{ getAvatar($notification->sender->avatar) }}" class="img-resonsive img-circle" width="36px" height="36px" alt="avatar">
                 </div>

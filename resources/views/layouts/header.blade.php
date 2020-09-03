@@ -60,13 +60,13 @@
             </a>
         </div>
         <div class="p-2 nav-icon-lg clean-black">
-            <a class="nav-icon" href="#"><em class="fa fa-crosshairs"></em>
-                <span>{{ __('Explore') }}</span>
+            <a class="nav-icon" href="javascript:void(0)"><em class="fa fa-crosshairs"></em>
+                <span>{{ __('None') }}</span>
             </a>
         </div>
         <div class="p-2 nav-icon-lg dark-black">
-            <a class="nav-icon" href="#"><em class="fab fa-instagram"></em>
-                <span>{{ __('Upload') }}</span>
+            <a class="nav-icon" href="javascript:void(0)"><em class="fab fa-instagram"></em>
+                <span>{{ __('None') }}</span>
             </a>
         </div>
         <div class="p-2 nav-icon-lg clean-black">
