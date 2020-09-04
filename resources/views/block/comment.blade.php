@@ -7,7 +7,18 @@
                 <span class="comment-content-{{ $comment->id }}">{{ $comment->content ?? ''}}</span>
             </div>
         </div>
+        @if(auth()->id() == $comment->user->id)
+            <div class="dropdown pull-right drop-comment">
+                <button class="btn btn-secondary btn-flat btn-flat-icon button-comment" type="button" data-toggle="dropdown" aria-expanded="false">
+                    <em class="fa fa-ellipsis-h"></em>
+                </button>
+                <div class="dropdown-menu dropdown-scale dropdown-menu-right drop-right" role="menu">
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmDeleteCommentModal{{ $comment->id }}">{{ __('Delete comment') }}</a>
+                </div>
+            </div>
+        @endif
     </div>
+    @include('block.modals.delete_comment')
     <div class="post__date">
         <time class="published" datetime="2004-07-24T18:18">{{ getCreatedFromTime($comment) }}</time>
     </div>

@@ -9,6 +9,7 @@
     
     <link rel="icon" href="{{ asset('assets/img/logo.png') }}">
     <link type="text/css" href="{{ asset('assets/css/demos/photo.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
      @include('layouts.header')
@@ -23,6 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     <script src="{{ asset('assets/js/jquery.magnific-popup.js') }}"></script>
+     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript">
          var currentUserId = "{{ auth()->id() }}";
          var notificationCount = "{{ auth()->user()->notifications()->isNotReadCount() }}";
@@ -93,6 +95,10 @@
                 })
             });
         }
+
+        $( function() {
+            $( "#datepicker" ).datepicker();
+        });
 
         zoomImage();
         zoomGallery();

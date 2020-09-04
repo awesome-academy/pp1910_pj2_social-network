@@ -1949,6 +1949,7 @@ a.navbar-brand:hover {
     background-color: #f2f3f5;
     padding: 5px 10px;
     border-radius: 14px;
+    float: left;
 }
 .more-comments {
     padding: 15px 40px;
@@ -1957,6 +1958,15 @@ a.navbar-brand:hover {
     display: block;
     font-weight: 700;
     margin: 0 auto;
+}
+.drop-comment {
+    padding: 5px 16px;
+}
+.button-comment {
+    background: none;
+}
+.button-comment em {
+    font-size: initial;
 }
 /* ==========================================================================
    Magnific Popup

@@ -52,7 +52,7 @@
                     <div class="col col-lg-12 col-md-12">
                         <label class="control-label">{{ __('Your Birthday') }}</label>
                         <div class="form-row hide-inputbtns">
-                            <input class="form-control input-width @error('datetimepicker') is-invalid @enderror" name="datetimepicker" value="{{ old('datetimepicker') ?? formatDate($user->birthday) }}" />
+                            <input id="datepicker" class="form-control input-width @error('datetimepicker') is-invalid @enderror" name="datetimepicker" value="{{ old('datetimepicker') ?? formatDate(auth()->user()->birthday) }}" />
                         </div>
                     </div>
                     <div class="col col-lg-12 col-md-12">
