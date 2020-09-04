@@ -1463,7 +1463,7 @@ a.navbar-brand:hover {
 .img-cover {
   width: 100%;
   width: -webkit-fill-available;
-  height: 500px;
+  height: 400px;
 
 }
 

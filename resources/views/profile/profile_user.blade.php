@@ -5,7 +5,7 @@
     <section class="profile">
         <div class="container-fluid">
             <div class="row">
-                <a class="profilebox"><img class="img-cover" src="assets/img/posts/12.jpg" alt="">
+                <a class="profilebox"><img class="img-cover" src="{{ __('assets/img/cover.png') }}" alt="">
                 </a>
             </div>
         </div>
@@ -16,7 +16,7 @@
                 <div class="col-lg-12">
                     <div class="post-content">
                         <div class="author-post text-center">
-                            <a href="#"><img class="img-fluid img-circle" src="{{ getAvatar($user->avatar) }}" alt="Image"></a>
+                            <img class="img-fluid img-circle" src="{{ getAvatar($user->avatar) }}" alt="Image">
                         </div>
                     </div>
                 </div>
@@ -52,9 +52,9 @@
             <div class="row">
                 <div class="menu-category">
                     <ul class="menu">
-                        <li class="current-menu-item"><a href="#">{{ __('Posts') }} <span>{{ $user->posts()->get()->count() }}</span></a></li>
-                        <li><a href="#">{{ __('Followers') }} <span>{{ $user->followers()->get()->count() }}</span></a></li>
-                        <li><a href="#">{{ __('Following') }} <span>{{ $user->followings()->get()->count() }}</span></a></li>
+                        <li class="current-menu-item">{{ __('Posts') }} <span>{{ $user->posts()->get()->count() }}</span></li>
+                        <li>{{ __('Followers') }} <span>{{ $user->followers()->get()->count() }}</span></li>
+                        <li>{{ __('Following') }} <span>{{ $user->followings()->get()->count() }}</span></li>
                     </ul>
                 </div>
 
@@ -69,7 +69,7 @@
                 @endphp
                 @foreach($images as $key => $image)
                     <div class="col-lg-4">
-                        <a href="#myModal" data-toggle="modal">
+                        <a href="javascript:void(0)" data-toggle="modal">
                             <div class="explorebox">
                                 <img class="img-box" src="{{ asset('storage/images/posts/' . $image) }}" alt="">
                             </div>
