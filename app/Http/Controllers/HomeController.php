@@ -39,8 +39,9 @@ class HomeController extends Controller
     {
         $posts = $this->postService->getListPost(auth()->user());
         $suggestUsers = $this->userService->getListNotFollow(auth()->user(), config('user.suggestion_follow'));
+        $activities = $this->activityService->getListActivities(auth()->user());
 
-        return view('home', compact('posts', 'suggestUsers'));
+        return view('home', compact('posts', 'suggestUsers', 'activities'));
     }
 
     /**

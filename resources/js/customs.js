@@ -446,4 +446,57 @@ $(document).ready(function () {
             $('.search-people-result').hide();
         }
     });
+});
+
+$(document).ready(function () {
+    function pushActivity(activityList, html) {
+        activityList.find('.nothing-here-activity').remove();
+
+        activityList.hide();
+        activityList.prepend(html).fadeIn(1000);
+    }
+
+    function countLength(div) {
+        return div.length;
+    }
+
+    function getLengthAfterAjax() {
+        return $('.activity-list .activity-body').length;
+    }
+
+    var url = '/activities/get-latest';
+
+    var activityList = $('.activity-list');
+    var activityItems = activityList.find('.activity-body');
+    var activityItemsCount = countLength(activityItems);
+
+    setInterval(function () {
+        $.ajax({
+            url: url,
+            type: 'GET',
+            cache: false,
+            success: function (result) {
+                if (result.status) {
+                    if (result.count > 0) {
+                        if (activityItemsCount < 10) {
+                            pushActivity(activityList, result.html);
+
+                            activityItemsCount = getLengthAfterAjax();
+                        } else {
+                            $('.activity-list .activity-body').slice(-result.count).remove();
+
+                            pushActivity(activityList, result.html);
+
+                            activityItemsCount = getLengthAfterAjax();
+                        }
+                    }
+                } else {
+                    errorMessage();
+                }
+            },
+            error: function () {
+                errorMessage();
+            }
+        });
+    }, 60000);
 })

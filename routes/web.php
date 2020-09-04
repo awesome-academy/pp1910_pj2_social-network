@@ -31,5 +31,6 @@ Route::group(['middleware' => ['auth','verified', 'language']], function () {
     Route::post('/notifications/mark-all', 'NotificationController@markAllAsRead')->name('notifications.mark_all');
     Route::get('comment/load-more', 'CommentController@viewMoreComment')->name('comments.viewMoreComment');
     Route::post('/language', 'UserController@language')->name('language');
+    Route::get('/activities/get-latest', 'ActivityController@getLatestActivity')->name('activity.getLatest');
 });
 
