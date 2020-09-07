@@ -8,18 +8,6 @@ use App\Services\FriendService;
 
 class ActivityService
 {
-    protected $friendService;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
     /**
      * Store Activity in database.
      *
@@ -37,6 +25,32 @@ class ActivityService
         }
 
         return true;
+    }
+
+    /**
+     * Get list activities
+     *
+     * @param App\User $user
+     * @return \Illuminate\Http\Response
+     */
+    public function getListActivities($user)
+    {
+        $userFollowId = $user->followings()->pluck('following_id');
+
+        return Activity::with('user')->whereIn('user_id', $userFollowId)->orderBy('created_at', 'desc')->paginate(config('activity.page'));
+    }
+
+    /**
+     * Get latest activity
+     *
+     * @param App\User $user
+     * @return \Illuminate\Http\Response
+     */
+    public function getLatestActivity($user)
+    {
+        $userFollowId = $user->followings()->pluck('following_id');
+
+        return Activity::with('user')->whereIn('user_id', $userFollowId)->whereBetween('created_at', [now()->subMinutes(config('activity.minutes_between')), now()])->limit(config('activity.display.limit'))->orderBy('created_at', 'desc')->get();
     }
 
     /**

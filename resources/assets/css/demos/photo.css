@@ -3174,3 +3174,28 @@ img.mfp-img {
     background: none;
     font-family: auto;
 }
+/* ==========================================================================
+   Activity List
+   ========================================================================== */
+.activity-body {
+    float: left;
+    width: 100%;
+    padding: 5px 5px;
+}
+.activity-body img {
+    width: 37px;
+    height: 37px;
+    float: left;
+    padding: 2px;
+    border: 2px solid #f4f4f4;
+}
+.activity-body .name-box {
+    position: relative;
+    top: auto;
+    font-size: small;
+}
+.activity-body .name-box a {
+    color: #0b0b0b;
+    font-weight: bold;
+    font-family: 'Abhaya Libre', serif;
+}

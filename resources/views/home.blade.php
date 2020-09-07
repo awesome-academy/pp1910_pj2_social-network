@@ -6,53 +6,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
-                    <a href="#">
-                        <div class="storybox">
-                            <div class="story-body text-center">
-                                <div class=""><img class="img-circle" src="assets/img/users/10.jpg" alt="user"></div>
-                                <h4>Clifford Graham</h4>
-                                <p>2 hours ago</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="#">
-                        <div class="storybox">
-                            <div class="story-body text-center">
-                                <div class=""><img class="img-circle" src="assets/img/users/13.jpeg" alt="user"></div>
-                                <h4>Eleanor Harper</h4>
-                                <p>4 hours ago</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="#">
-                        <div class="storybox">
-                            <div class="story-body text-center">
-                                <div class=""><img class="img-circle" src="assets/img/users/12.jpg" alt="user"></div>
-                                <h4>Sean Coleman</h4>
-                                <p>5 hours ago</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="#">
-                        <div class="storybox">
-                            <div class="story-body text-center">
-                                <div class=""><img class="img-circle" src="assets/img/users/15.jpg" alt="user"></div>
-                                <h4>Vanessa Wells</h4>
-                                <p>5 hours ago</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <div class="trending-box hidden-xs hidden-md">
+                    <div class="trending-box">
                         <div class="row">
                             <div class="col-lg-12">
-                                <a href="photo_stories.html"><h4>More stories</h4></a>
+                                <h4>{{ __('Activity') }}</h4>
                             </div>
                         </div>
                     </div>
+                    @include('block.widgets.activity_list')
                 </div>
                 <div class="col-lg-6">
                     <div class="box">
